@@ -1,0 +1,56 @@
+import turtle
+import random
+from random import randint
+
+dot = turtle.Turtle()
+
+for i in range(100):
+  a = random.randint(1,4)
+#######Left - Blue#######
+  if a == 1:
+    dot.begin_fill()
+    dot.color("blue")
+    dot.backward(20)
+    for i in range(4):
+      dot.forward(20)
+      dot.left(90)
+    dot.end_fill()
+#####Right - green#####
+  elif a == 2:
+    dot.begin_fill()
+    dot.color("green")
+    for i in range(4):
+      dot.forward(20)
+      dot.left(90)
+    dot.forward(20)
+    dot.end_fill()
+  elif a == 3:
+#####Left ########
+    dot.begin_fill()
+    dot.color("purple")
+    dot.backward(20)
+    for i in range(4):
+      dot.forward(20)
+      dot.left(90)
+    dot.end_fill()
+    dot.penup()
+    dot.left(90)
+    dot.forward(20)
+    dot.right(90)
+    dot.forward(20)
+    dot.pendown()
+  elif a == 4:
+    ########Down - Red######
+    dot.begin_fill()
+    dot.color("red")
+    dot.backward(20)
+    for i in range(4):
+      dot.forward(20)
+      dot.left(90)
+    dot.end_fill()
+    dot.penup()
+    dot.right(90)
+    dot.forward(20)
+    dot.left(90)
+    dot.forward(20)
+    dot.pendown()
