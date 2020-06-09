@@ -3,6 +3,7 @@ from tkinter import *
 
 #Base program
 root = Tk()
+root.title("Calculator")
 
 gui = Entry(root, width = 35, borderwidth = 5, fg = "white", bg = "black")
 gui.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
