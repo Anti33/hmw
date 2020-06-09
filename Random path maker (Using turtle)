@@ -15,7 +15,7 @@ for i in range(100):
       dot.forward(20)
       dot.left(90)
     dot.end_fill()
-#####Right - green#####
+#####Right - Green#####
   elif a == 2:
     dot.begin_fill()
     dot.color("green")
@@ -25,7 +25,7 @@ for i in range(100):
     dot.forward(20)
     dot.end_fill()
   elif a == 3:
-#####Left ########
+#####Left - Purple########
     dot.begin_fill()
     dot.color("purple")
     dot.backward(20)
@@ -40,7 +40,7 @@ for i in range(100):
     dot.forward(20)
     dot.pendown()
   elif a == 4:
-    ########Down - Red######
+########Down - Red######
     dot.begin_fill()
     dot.color("red")
     dot.backward(20)
