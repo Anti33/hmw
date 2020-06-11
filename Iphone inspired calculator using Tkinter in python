@@ -21,6 +21,8 @@ def button_add(number):
 def button_to_add_nums():
   first_number = gui.get()
   global f_num
+  global math
+  math = "add"
   f_num = int(first_number)
   gui.delete(0, END)
 
@@ -30,7 +32,7 @@ def equal():
   if math == "subtraction":
     gui.insert(0, f_num - int(second_number))
   elif math == "add":
-    gui.insert(0, f_num - int(second_number))
+    gui.insert(0, f_num + int(second_number))
   else:
     gui.insert(0, "Error")
 
