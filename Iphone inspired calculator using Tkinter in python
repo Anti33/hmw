@@ -1,4 +1,4 @@
-import tkinter
+import tkinter, math
 from tkinter import *
 
 #Base program
@@ -6,7 +6,8 @@ root = Tk()
 root.title("Calculator")
 
 gui = Entry(root, width = 35, borderwidth = 5, fg = "white", bg = "black")
-gui.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
+gui.configure(font=("Courier", 14))
+gui.grid(row = 0, column = 0, columnspan = 4, padx = 10, pady = 10)
 
 
 root.configure(bg='black')
@@ -33,6 +34,14 @@ def equal():
     gui.insert(0, f_num - int(second_number))
   elif math == "add":
     gui.insert(0, f_num + int(second_number))
+  elif math == "power of":
+    gui.insert(0, f_num ** int(second_number))
+  elif math == "divide":
+    gui.insert(0, f_num / int(second_number)) 
+  elif math == "times":
+    gui.insert(0, f_num * int(second_number)) 
+  elif math == "factorial":
+    gui.insert(0, factorial_calc(f_num)) 
   else:
     gui.insert(0, "Error")
 
@@ -44,25 +53,74 @@ def minus():
   f_num = int(first_number)
   gui.delete(0, END)
 
+def sqrt_num():
+  first_number = gui.get()
+  global f_num
+  global math
+  math = "power of"
+  f_num = int(first_number)
+  gui.delete(0, END)
+
+def divide():
+  first_number = gui.get()
+  global f_num
+  global math
+  math = "divide"
+  f_num = int(first_number)
+  gui.delete(0, END)
+
+def times():
+  first_number = gui.get()
+  global f_num
+  global math
+  math = "times"
+  f_num = int(first_number)
+  gui.delete(0, END)
+
 def button_clear_function():
   gui.delete(0, END)
 
 #Assigning functions, dimensions and other features to the buttons
 
-button_1 = Button(root, text = "1", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(1))
-button_2 = Button(root, text = "2", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(2))
-button_3 = Button(root, text = "3", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(3))
-button_4 = Button(root, text = "4", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(4))
-button_5 = Button(root, text = "5", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(5))
-button_6 = Button(root, text = "6", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(6))
-button_7 = Button(root, text = "7", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(7))
-button_8 = Button(root, text = "8", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(8))
-button_9 = Button(root, text = "9", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(9))
-button_0 = Button(root, text = "0", padx = 40, pady = 20, bg = "#696969", fg = "white", command = lambda: button_add(0))
-actual_button_to_add = Button(root, text = "+", padx = 45, pady = 20, bg = "orange", command = lambda: button_to_add_nums())
-button_equals = Button(root, text = "=", padx = 45, pady = 20, bg = "orange", command = lambda: equal())
-button_clear = Button(root, text = "Clear", padx = 34, pady = 20, bg = "orange", command = lambda: button_clear_function())
-button_minus = Button(root, text = "-", padx = 48, pady = 20, bg = "orange", command = lambda: minus())
+button_1 = Button(root, text = "1", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(1))
+button_2 = Button(root, text = "2", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(2))
+button_3 = Button(root, text = "3", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(3))
+button_4 = Button(root, text = "4", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(4))
+button_5 = Button(root, text = "5", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(5))
+button_6 = Button(root, text = "6", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(6))
+button_7 = Button(root, text = "7", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(7))
+button_8 = Button(root, text = "8", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(8))
+button_9 = Button(root, text = "9", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(9))
+button_0 = Button(root, text = "0", padx = 38, pady = 15, bg = "#696969", fg = "white", command = lambda: button_add(0))
+actual_button_to_add = Button(root, text = "+", padx = 38, pady = 15, bg = "orange", command = lambda: button_to_add_nums())
+button_equals = Button(root, text = "=", padx = 38, pady = 15, bg = "orange", command = lambda: equal())
+button_clear = Button(root, text = "Clear", padx = 38, pady = 15, bg = "orange", command = lambda: button_clear_function())
+button_minus = Button(root, text = "-", padx = 38, pady = 15, bg = "orange", command = lambda: minus())
+button_sqrt = Button(root, text = "x^y", padx = 25, pady = 15, bg = "orange", command = lambda: sqrt_num())
+button_divide = Button(root, text = "÷", padx = 38, pady = 15, bg = "orange", command = lambda: divide())
+button_times = Button(root, text = "x", padx = 38, pady = 15, bg = "orange", command = lambda: times())
+
+#Changing font and size 
+
+button_1.config(font=("Courier", 16))
+button_2.config(font=("Courier", 16))
+button_3.config(font=("Courier", 16))
+button_4.config(font=("Courier", 16))
+button_5.config(font=("Courier", 16))
+button_6.config(font=("Courier", 16))
+button_7.config(font=("Courier", 16))
+button_8.config(font=("Courier", 16))
+button_9.config(font=("Courier", 16))
+button_0.config(font=("Courier", 16))
+
+button_clear.config(font=("Courier", 16))
+button_equals.config(font=("Courier", 16))
+
+actual_button_to_add.config(font=("Courier", 16))
+button_minus.config(font=("Courier", 16))
+button_sqrt.config(font=("Courier", 16))
+button_divide.config(font=("Courier", 16))
+button_times.config(font=("Courier", 16))
 
 #Displaying the buttons on screens
 
@@ -80,9 +138,13 @@ button_9.grid(row = 1, column = 2)
 
 button_0.grid(row = 4, column = 1)
 
-button_clear.grid(row = 1, column = 3)
-button_equals.grid(row = 4, column = 3)
+button_clear.grid(row = 1, column = 3, columnspan = 4)
+button_equals.grid(row = 4, column = 4)
+
 actual_button_to_add.grid(row = 2, column = 3)
 button_minus.grid(row = 3, column = 3)
+button_sqrt.grid(row = 2, column = 5)
+button_divide.grid(row = 3, column = 4)
+button_times.grid(row = 2, column = 4)
 
 root.mainloop()
