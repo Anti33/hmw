@@ -1,0 +1,26 @@
+#include <iostream>
+#include <sstream>
+#include <cstdlib>
+#include <algorithm>
+#include <limits>
+#include <vector>
+#include <numeric>
+#include <iomanip>
+#include <ctime>
+#include <cmath>
+#include <bits/stdc++.h>
+#include <string>
+
+using namespace std;
+
+int main(){
+  vector<int>list = {1,2,3,4,5,3 ,45 ,56,3,4,345,4,5 ,43 ,53,4,234};
+  int x;
+  cout << "Enter the number you wan to look for: ";
+  cin >> x;
+  for (int i; i < list.size(); i++){
+    if (list[i] == x){
+      cout << x << " found in element " << i;
+    }
+  }
+}
