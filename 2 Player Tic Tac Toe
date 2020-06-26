@@ -1,0 +1,76 @@
+import sys, time
+game_state = [[' ',' ',' '],
+              [' ',' ',' '],
+              [' ',' ',' ']]
+  
+def printboard(users_input1):
+  if users_input1 < 4 and game_state[0][user1_position-1] != "O":
+    game_state[0][user1_position-1] = "X"
+  elif users_input1 > 3 and users_input1 <= 6 and game_state[1][user1_position-4] != "O":
+    game_state[1][user1_position-4] = "X"
+  elif users_input1 > 6 and users_input1 < 10 and game_state[2][user1_position-7] != "O":
+    game_state[2][users_input1-7] = "X"
+  else:
+    print(f"\nSymbol O is already in location {users_input1}, Try a different location\n")
+
+  for i in range(3):
+    print(game_state[i])
+  return("")
+
+def printboard_user2(users_input2):
+  if users_input2 < 4 and game_state[0][user1_position-1] != "X":
+    game_state[0][users_input2-1] = "O"
+  elif users_input2 > 3 and users_input2 <= 6 and game_state[1][user2_position-4] != "X":
+    game_state[1][users_input2-4] = "O"
+  elif users_input2 > 6 and users_input2 < 10 and game_state[2][user1_position-7] != "X":
+    game_state[2][users_input2-7] = "O"
+  else:
+    print(f"\nSymbol O is already in location {users_input2}, Try a different location\n")
+  for i in range(3):
+    print(game_state[i])
+  return("")
+#set.default()
+
+def printwinner(x, y):
+  if game_state[x][y] == "X":
+    print("Player 1 is the winner!")
+    sys.exit()
+  elif game_state[x][y] == "O":
+    print("Player 2 is the winner!")
+    sys.exit()
+
+
+  
+while True:
+  if game_state[0][0] == game_state[1][1] and game_state[1][1] == game_state[2][2]:
+    printwinner(1, 1)
+  elif game_state[0][2] == game_state[1][1] and game_state[1][1] == game_state[2][0]:
+    printwinner(1, 1) 
+  #Horizontal check
+  elif game_state[0][0] == game_state[0][1] and game_state[0][1] == game_state[0][2]:
+    printwinner(0, 0)
+  elif game_state[1][0] == game_state[1][1] and game_state[1][1] == game_state[1][2]:
+    printwinner(1, 0)
+  elif game_state[2][0] == game_state[2][1] and game_state[2][1] == game_state[2][2]:
+    printwinner(2, 0)
+  #Vertical check
+  elif game_state[0][0] == game_state[1][0] and game_state[1][0] == game_state[2][0]:
+    printwinner(1, 0)
+  elif game_state[0][1] == game_state[1][1] and game_state[1][1] == game_state[2][1]:
+    printwinner(1, 1)
+  elif game_state[0][2] == game_state[1][2] and game_state[1][2] == game_state[2][2]:
+    printwinner(1, 2)
+    
+
+
+  user1_position = int(input("Enter the position: "))
+  if user1_position > 10:
+    break
+  else:
+    print(printboard(user1_position))
+  
+  users_input2 = int(input("Enter the position of player 2: "))
+  if users_input2 > 10:
+    break
+  else:
+    print(printboard_user2(users_input2))
