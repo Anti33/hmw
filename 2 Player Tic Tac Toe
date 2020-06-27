@@ -2,46 +2,64 @@ import sys, time
 game_state = [[' ',' ',' '],
               [' ',' ',' '],
               [' ',' ',' ']]
-  
+c = 0
+def counter():
+  global c
+  c += 1
+
+
 def printboard(users_input1):
   if users_input1 < 4 and game_state[0][user1_position-1] != "O":
     game_state[0][user1_position-1] = "X"
+    counter()
   elif users_input1 > 3 and users_input1 <= 6 and game_state[1][user1_position-4] != "O":
     game_state[1][user1_position-4] = "X"
+    counter()
   elif users_input1 > 6 and users_input1 < 10 and game_state[2][user1_position-7] != "O":
     game_state[2][users_input1-7] = "X"
+    counter()
   else:
-    print(f"\nSymbol O is already in location {users_input1}, Try a different location\n")
+    print(f"\nA symbol is already in that location, {users_input1}, Try a different location\n")
 
+  #Print out the table
   for i in range(3):
     print(game_state[i])
   return("")
 
 def printboard_user2(users_input2):
-  if users_input2 < 4 and game_state[0][user1_position-1] != "X":
+  if users_input2 < 4 and game_state[0][users_input2-1] != "X":
     game_state[0][users_input2-1] = "O"
-  elif users_input2 > 3 and users_input2 <= 6 and game_state[1][user2_position-4] != "X":
+    counter()
+  elif users_input2 > 3 and users_input2 <= 6 and game_state[1][users_input2-4] != "X":
     game_state[1][users_input2-4] = "O"
-  elif users_input2 > 6 and users_input2 < 10 and game_state[2][user1_position-7] != "X":
+    counter()
+  elif users_input2 > 6 and users_input2 < 10 and game_state[2][users_input2-7] != "X":
     game_state[2][users_input2-7] = "O"
+    counter()
   else:
-    print(f"\nSymbol O is already in location {users_input2}, Try a different location\n")
+    print(f"\nA symbol is already in that location, {users_input2}, Try a different location\n")
+  
+  #Print out the table
   for i in range(3):
     print(game_state[i])
   return("")
-#set.default()
 
 def printwinner(x, y):
   if game_state[x][y] == "X":
-    print("Player 1 is the winner!")
+    return("Player 1 is the winner!")
     sys.exit()
   elif game_state[x][y] == "O":
-    print("Player 2 is the winner!")
+    return("Player 2 is the winner!")
     sys.exit()
 
 
   
 while True:
+  #Checks if all boxes are full or not
+  if c == 9:
+    print("Its a draw!\n")
+
+  #Diagonal check
   if game_state[0][0] == game_state[1][1] and game_state[1][1] == game_state[2][2]:
     printwinner(1, 1)
   elif game_state[0][2] == game_state[1][1] and game_state[1][1] == game_state[2][0]:
@@ -53,6 +71,7 @@ while True:
     printwinner(1, 0)
   elif game_state[2][0] == game_state[2][1] and game_state[2][1] == game_state[2][2]:
     printwinner(2, 0)
+
   #Vertical check
   elif game_state[0][0] == game_state[1][0] and game_state[1][0] == game_state[2][0]:
     printwinner(1, 0)
@@ -61,8 +80,6 @@ while True:
   elif game_state[0][2] == game_state[1][2] and game_state[1][2] == game_state[2][2]:
     printwinner(1, 2)
     
-
-
   user1_position = int(input("Enter the position: "))
   if user1_position > 10:
     break
