@@ -1,0 +1,56 @@
+board = [[0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0], # board [1] [1]
+        [0, 0, 0, 0]]
+
+total = []
+for i in range(len(board)):
+  for j in range(len(board)):
+    total.append(board[i][j])
+total_nums = 0
+for num in total:
+  total_nums += num
+
+def clean_print():
+  for i in range(len(board)):
+    print(board[i])
+#Check if that box is already full or not, else print try a a different location
+def num_placement(location):
+  if location < 5:
+    board[0][location-1] = 2
+    clean_print()
+  elif location > 4 and location < 9:
+    board[1][location-5] = 2
+    clean_print()
+  elif location >= 9 and location <= 12:
+    board[2][location-9] = 2
+    clean_print()
+  elif location > 12 and location < 17:
+    board[3][location-13] = 2
+    clean_print()
+  else:
+    print("\n~~~Number doesnt fit in the range, try again!~~~\n")
+
+def direction_refresh(direction):
+  #def refresh()
+  if direction == "d":
+    for i in range(len(board)-2):
+      for j in range(len(board)):
+        board [i+1][j] += board[i][j]
+        
+  print(board)
+  return(0)
+
+while True:
+  location = int(input("Enter the location to place the number 2: "))
+  direction = input("\nEnter the direction to swipe (Down, up, Right, Left): ")
+  num_placement(location)
+  if direction.lower() == "d" or "down":
+    direction_refresh("d")
+  if direction.lower() == "u" or "up":
+    direction_refresh("u")
+  if direction.lower() == "r" or "right":
+    direction_refresh("r")
+  if direction.lower() == "l" or "left":
+    direction_refresh("l")
+  
