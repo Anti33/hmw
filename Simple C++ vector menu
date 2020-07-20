@@ -1,0 +1,112 @@
+#include <iostream>
+#include <climits>
+#include <string>
+#include <vector>
+#include <cmath>
+using namespace std; 
+
+
+int main(){
+  vector<int> nums = {12,65,23,76,12};
+  string option;
+
+  do {
+    cout << "\n------The Menu-----" << endl;
+    cout << "P - Print numbers" << endl;
+    cout << "A - Add a number" << endl;
+    cout << "M - Display mean of numbers" << endl;
+    cout << "S - Display the smallest number" << endl;
+    cout << "L - Display the largest number" << endl;
+    cout << "SO - Display a sorted list of the numbers" << endl;
+    cout << "C - Clear out a list" << endl;
+    cout << "Q - Quit" << endl;
+
+    cout << "\nSelect your option: ";
+    cin >> option;
+
+    if (option == "p" || option == "P"){
+      if (nums.size() == 0){
+        cout << "Unable to determine the largest number - try adding a number!" << endl;
+      } else {
+        cout << "The numbers in the lists are: ";
+        for (auto i: nums){
+          cout << i << " ";
+        }
+      }
+    } else if (option == "a" || option == "A") {
+      if (nums.size() == 0){
+        cout << "List is empty, but now you can add a number!" << endl;
+      }
+      int num_add = 0;
+      cout << "Enter the number to add: ";
+      cin >> num_add;
+      nums.push_back(num_add);
+      cout << "\nAdded!" << endl;
+      cout << "The list is now: ";
+      for (auto i: nums){
+        cout << i << " ";
+      } 
+      cout << endl;
+    } else if (option == "m" || option == "M") {
+      if (nums.size() == 0){
+        cout << "Unable to determine the mean of the list - try adding a number!" << endl;
+      }
+      double mean_of_nums = 0;
+      for (auto i: nums){
+        mean_of_nums += i;
+      }
+      cout << "The mean is " << mean_of_nums/nums.size() << " rounded to the nearest whole number it is " << mean_of_nums/1 << endl;
+    } else if (option == "s" || option == "S") {
+      int smallest_num = 0;
+      if (nums.size() == 0){
+        cout << "Unable to determine the smallest number - try adding a number!" << endl;
+      } else {
+        for (auto i: nums){
+          if (i < smallest_num){
+            smallest_num = i;
+          }
+        }        
+      }
+      cout << "The smallest number is " << smallest_num << endl;
+    } else if (option == "l" || option == "L") {
+      int largest_num = 0;
+      if (nums.size() == 0){
+        cout << "Unable to determine the largest number - try adding a number!" << endl;
+      } else {
+        for (auto i: nums){
+          if (i < largest_num){
+            largest_num = i;
+          }
+        }
+      }
+      cout << "The largest number is " << largest_num << endl;
+    } else if (option == "q" || option == "Q"){
+      cout << "Goodbye!" << endl;
+      break;
+    } else if (option == "SO" || option == "So" || option == "sO" || option == "so") {
+      if (nums.size() == 0){
+        cout << "Unable to sort the list due to no items in a list - try adding a number!" << endl;
+      } else {
+        for (int i = 0; i < nums.size(); i++){
+          for (int j = 0; j < nums.size(); j++){
+            if (nums[j] > nums[j+1]){
+              swap(nums[j], nums[j+1]);
+            }
+          }
+        }
+        cout << "The sorted list is now: ";
+        for (auto i: nums){
+          cout << i << " ";
+        } cout << endl;
+      }
+    } else if (option == "c" || option == "C") {
+      nums.clear();
+      cout << "The list is now empty!" << endl;
+    } else {
+      cout << "Invalid input - try again!" << endl;
+    }
+  } while (option != "Q" || option != "q");
+}
+
+
+// Add a option to find the duplicate number in the list
