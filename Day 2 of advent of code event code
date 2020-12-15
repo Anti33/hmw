@@ -1,0 +1,97 @@
+global total_counter
+total_counter = 0
+
+def check(pass_):
+  
+  global total_counter
+  #Retreive password and put it in this format
+  password = pass_
+
+  #Finding the lower bound of the password
+  lower  = 0
+  if password[0][0].isdigit() == True:
+    lower = int(password[0][0])
+  if password[0][0].isdigit() == True and password[0][1].isdigit() == True:
+    lower = int(password[0][0] + password[0][1])
+  #Finding the upper bound of the password
+  upper  = 0
+  if password[0][2].isdigit() == True:
+    upper = int(password[0][2])
+  if password[0][2].isdigit() == True and password[0][3].isdigit() == True:
+    upper = int(password[0][2] + password[0][3])
+  elif password[0][3].isdigit() == True and password[0][4].isdigit() == True:
+    upper = int(password[0][3] + password[0][4])
+
+  print(f"The lower bound is {lower} and the upper bound is {upper}")
+
+  t = 0
+  space = 0
+
+  while t < len(password[0]):
+    if password[0][t] == " " and password[0][t-1].isdigit() == False:
+      space = t
+      break
+    t += 1
+
+  l = 0
+  letter = ""
+
+  while l < len(password[0]):
+    if password[0][l].isalpha() == True:
+      letter = password[0][l]
+      break
+    l += 1
+
+
+
+
+
+#the main letter assinged as letter
+#the lower and upper bounds assigned lower and upper
+#the space, just before the first letter starts
+
+
+  letter_counter = 0
+
+#while letter_counter < len(password[0]):
+ # if password[0][letter_counter] == letter and letter_counter >= lower and letter_counter <= upper:
+  #  letter_counter += 1
+  #if letter_counter > upper:
+   # break
+
+
+  if letter == password[0][space+lower-1] or letter == password[0][space+upper-1]:
+    total_counter += 1
+  
+  print(password[0][space+upper])
+
+
+  #for i in range(space+1, len(password[0]), 1):
+    #if password[0][i] == letter:
+        #letter_counter += 1
+
+
+
+  #if letter_counter >= lower and letter_counter <= upper:
+    #total_counter += 1
+  #else:
+    #print("no")
+
+#for i in range(len(nums)):
+ # for j in range(len(nums)):
+  #  for k in range(len(nums)):
+   #   if nums[i] + nums[j] + nums[k] == 2020:
+    #    print(f"number 1 is {nums[i]} and numbder 2 is {nums[j]} and number 3 is {nums[k]} :)")
+
+
+nums = []
+tempor = [""]
+with open("numbers.txt", "r") as f:
+  a = f.readline()
+  for line in a:
+    for i in f:
+      #nums.append(i)
+      check([str(i)])
+
+
+print(total_counter)
