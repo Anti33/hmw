@@ -1,0 +1,37 @@
+import random, time
+from random import randint
+
+for i in range(3):
+  options = ["r", "p", "s"]
+  state = random.randint(0,2)
+
+  player = input("Rock, paper or scissors? R/P/S ")
+
+  print("3")
+  time.sleep(1)
+  print("2")
+  time.sleep(1)
+  print("1")
+  time.sleep(1)
+  player = player.lower()
+  print(f"Computer chose {options[state]} and you chose {player}, so: ")
+  if player == "r" or player == "p" or player == "s":
+
+    if options[state] == player:
+      print("Draw!")
+    elif options[state] == "r" and player == "s":
+      print("Computer wins!")
+    elif options[state] == "r" and player == "p":
+      print("Human wins!")
+
+    elif options[state] == "p" and player == "r":
+      print("Computer wins!")
+    elif options[state] == "p" and player == "s":
+      print("Human wins!")
+    
+    elif options[state] == "r" and player == "s":
+      print("Human wins!")
+    elif options[state] == "r" and player == "p":
+      print("Computer wins!")
+  else:
+    print("Invalid input from player")
