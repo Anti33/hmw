@@ -1,0 +1,15 @@
+fibonac = [1, 2] 
+# so the last value does not exceed 4 milion
+while fibonac[-1] < 4000000:
+    fibonac.append(fibonac[-1] + fibonac[-2])
+
+del fibonac[-1]
+
+evenNums = []
+for i in fibonac:
+    if (i % 2) == 0:
+        evenNums.append(i)
+        
+print(sum(evenNums))
+
+# answer is 4613732
