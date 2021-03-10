@@ -1,0 +1,27 @@
+def palindrome():
+    
+    
+    def check_reverse(x):
+        length = len(str(x))
+        if len(str(x)) % 2 != 0:
+            x = int(str(x)[0:length//2] + str(x)[length//2 + 1:length ])
+        
+        if str(x)[::-1] == str(x):
+            return(True)
+        return(False)
+
+
+    largest_num = 0
+    
+    for i in range(100, 1000):
+        for j in range(100, 1000):
+            if check_reverse(i * j) == True and (i * j) > largest_num:
+                    largest_num = i * j
+                    
+    return(largest_num)
+
+
+
+print(palindrome())
+
+# Answer is 906609
