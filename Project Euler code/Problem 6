@@ -1,0 +1,18 @@
+def sum_square():
+    
+    square_summed = 0
+    for i in range(2, 101):
+        square_summed += i**2
+
+
+    summed_squared = 0
+    for i in range(2, 101):
+        summed_squared += i
+        
+    summed_squared = (summed_squared + 1) ** 2
+    print( (summed_squared + 1) - square_summed)
+
+print(sum_square())
+
+
+# answer is 25164150
