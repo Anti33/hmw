@@ -1,0 +1,19 @@
+import math
+def prime(x):
+    for i in range(2, int(math.sqrt(x)) + 1):
+        if (x % i) == 0:
+            return(False)
+    return(True)
+
+nums = []
+
+j = 2
+while len(nums) < 10001:
+    if prime(j) == True:
+        nums.append(j)
+    j += 1
+        
+print(nums[-1])
+
+#The answer is 104743
+
