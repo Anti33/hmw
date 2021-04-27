@@ -1,0 +1,31 @@
+#include <iostream>
+#include <climits>
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std; 
+
+void hanoi_algorithm(int n, int start, int end){
+  int other;
+
+  if (n == 1){
+    cout << "Start is: " << start << " End is: " << end << endl;
+  } else {
+    other = 6 - (start + end);
+    hanoi_algorithm(n - 1, start, other);
+    cout << "Start is: " << start << " End is: " << end << endl;
+    hanoi_algorithm(n - 1, other, end);
+  }
+}
+
+int main(){
+  int n, start, end;
+  cout << "A program to solve the Hanoi problem of a given number of disks, n, and a start to end p\n" << endl;
+  cout << "Please enter the number of disks: "; cin >> n;
+  cout << "Start number: "; cin >> start;
+  cout << "End number: "; cin >> end;
+
+  hanoi_algorithm(n, start, end);
+  
+}
