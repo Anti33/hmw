@@ -1,0 +1,16 @@
+#include<iostream>
+
+int gcd(int x,  int y){
+    if (y == 0){
+        return(x);
+    } else {
+        return(gcd(y, x % y));
+    }
+}
+
+int main(){
+    int n, m = 0;
+    std::cout << "Enter the two numbers to find the greatest common diviser for: ";
+    std::cin >> n >> m;
+    std::cout << "The greatrest common factor between " << n << " and " << m << " is " << gcd(n, m) << std::endl;
+}
