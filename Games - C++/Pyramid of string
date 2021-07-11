@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include<algorithm>
+#include <list>
+#include <string.h>
+
+using namespace std;
+
+string reverse_string(string to_reverse){
+    string temp = "";
+    for (int i = to_reverse.size(); i >= 0; i--){
+        temp += to_reverse[i];
+    }
+    return(temp);
+}
+
+int main(){
+    std::string sequence, space, pattern, second_half;
+    std::cout << "Enter sequence: "; std::cin >> sequence;
+
+    for (int i = sequence.size(); i > 0; i--){
+        
+        for (int k = 0; k < i; k++){
+            space += " ";
+        } // Add space 
+        
+        for (int m = 0; m <= (sequence.size() - i); m++){
+            pattern += sequence[m];
+        } // Add letters on left
+        
+        if (i >= 1){
+            second_half = reverse_string(pattern.substr(0, pattern.size()-1));
+        }
+
+        string merge = (space + pattern + second_half);
+        cout << merge << endl;
+        space = "";
+        pattern = "";
+        merge = "";
+    }
+}
